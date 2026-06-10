@@ -2,15 +2,26 @@
 
 Personal portfolio site for [Vishwa Deepak Choudhary](https://github.com/deepak4u2006).
 
-Live at: **https://deepak4u2006.github.io**
+**Live:** [https://deepak4u2006.github.io](https://deepak4u2006.github.io)
 
-## Projects featured
+## What's on the site
 
-- [Lifter](https://github.com/deepak4u2006/LifterApp)
-- [Lumen](https://github.com/deepak4u2006/Lumen)
-- [Karaoke Mic](https://github.com/deepak4u2006/KaraokeMic)
-- Swachvega Customer, Merchant & API (Kosahkode — private)
+- **GitHub analytics** — live repo count, stars, recently pushed repos
+- **Media showcase** — screenshots from PulseLedger, VaultFlow, CountriesVIP; GIF from Example_PanelBottom; promos from Trello Clone & Football Data
+- **iOS portfolio suite** — all 15 fintech-inspired SwiftUI demos from [ios-portfolio](https://github.com/deepak4u2006/ios-portfolio)
+- **React Native apps** — Lifter, Lumen, Karaoke Mic, Swachvega
+- **Open source classics** — CardsView_iOS, VDDropDown, countries_vip_clean, and more
 
 ## Deploy
 
-This repo uses GitHub Pages from the `main` branch root. Push to `main` to publish.
+Push to `main` — GitHub Pages serves from the root.
+
+```bash
+git add index.html README.md
+git commit -m "Expand portfolio with analytics, iOS suite, and media showcase"
+git push origin main
+```
+
+## Adding videos
+
+Record Simulator clips (⌘R → Record Screen), upload to a repo under `docs/media/`, then add a `<video>` block in the showcase section pointing at the raw GitHub URL.

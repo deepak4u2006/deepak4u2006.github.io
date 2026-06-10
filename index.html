@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vishwa Deepak Choudhary — mobile engineer building React Native apps for iOS and Android." />
-  <title>Vishwa Deepak Choudhary · Mobile Apps</title>
+  <meta name="description" content="Vishwa Deepak Choudhary — iOS & React Native engineer. Fintech SwiftUI demos, mobile apps, and open source." />
+  <title>Vishwa Deepak Choudhary · Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -19,12 +19,13 @@
       --accent: #7c6cff;
       --accent-2: #3dd6c6;
       --warm: #ff8b6a;
+      --swift: #f05138;
+      --rn: #61dafb;
       --radius: 18px;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -50,7 +51,7 @@
     .wrap {
       position: relative;
       z-index: 1;
-      max-width: 1080px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 24px 80px;
     }
@@ -59,8 +60,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 0 48px;
+      padding: 28px 0 40px;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -73,19 +75,24 @@
 
     .logo span { color: var(--accent-2); }
 
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+
     nav a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      margin-left: 24px;
+      font-size: 0.88rem;
       transition: color 0.2s;
     }
 
     nav a:hover { color: var(--text); }
 
-    .hero {
-      padding: 32px 0 72px;
-    }
+    section { margin-bottom: 72px; }
+
+    .hero { padding: 20px 0 56px; }
 
     .eyebrow {
       display: inline-flex;
@@ -112,27 +119,20 @@
       font-weight: 400;
       line-height: 1.08;
       letter-spacing: -0.02em;
-      max-width: 14ch;
+      max-width: 16ch;
       margin-bottom: 20px;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    h1 em { font-style: italic; color: var(--accent); }
 
     .lead {
       font-size: 1.125rem;
       color: var(--muted);
-      max-width: 52ch;
-      margin-bottom: 32px;
+      max-width: 58ch;
+      margin-bottom: 28px;
     }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
       display: inline-flex;
@@ -165,14 +165,13 @@
 
     .btn-ghost:hover { background: var(--surface-2); }
 
-    section { margin-bottom: 72px; }
-
     .section-head {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 28px;
+      flex-wrap: wrap;
     }
 
     h2 {
@@ -181,32 +180,189 @@
       letter-spacing: -0.02em;
     }
 
-    .section-note {
-      font-size: 0.9rem;
+    h3 { font-size: 1.05rem; font-weight: 600; }
+
+    .section-note { font-size: 0.9rem; color: var(--muted); }
+
+    /* Analytics */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .metric span { font-size: 0.82rem; color: var(--muted); }
+
+    .analytics-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+    }
+
+    .lang-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 36px;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+    }
+
+    .lang-row span:first-child { color: var(--muted); }
+    .lang-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .lang-bar i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .lang-bar i.swift { background: linear-gradient(90deg, var(--swift), #ff8b6a); }
+    .lang-bar i.js { background: linear-gradient(90deg, #f7df1e, #ff8b6a); }
+    .lang-bar i.objc { background: linear-gradient(90deg, #438eff, var(--accent)); }
+
+    .activity-list { list-style: none; }
+    .activity-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .activity-list li:last-child { border-bottom: none; }
+    .activity-list a { color: var(--text); text-decoration: none; }
+    .activity-list a:hover { color: var(--accent-2); }
+    .activity-list time { color: var(--muted); white-space: nowrap; }
+
+    /* Showcase / media */
+    .showcase-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .showcase-copy p { color: var(--muted); font-size: 0.92rem; margin: 12px 0 20px; }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .screenshot-grid img,
+    .media-item img,
+    .media-item video {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      display: block;
+      background: var(--surface-2);
+      aspect-ratio: 9/19.5;
+      object-fit: cover;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .media-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .media-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(124, 108, 255, 0.35);
+    }
+
+    .media-item figcaption {
+      padding: 12px 14px;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
+    .media-item figcaption strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.88rem;
+      margin-bottom: 2px;
+    }
+
+    .gif-wrap img { aspect-ratio: 16/10; object-fit: cover; }
+
+    /* Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
     }
+
+    .grid.compact { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      gap: 12px;
+      transition: border-color 0.25s, transform 0.25s;
       box-shadow: var(--shadow);
     }
 
     .card:hover {
       border-color: rgba(124, 108, 255, 0.35);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
+    }
+
+    .card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      padding: 28px;
     }
 
     .card-top {
@@ -217,22 +373,24 @@
     }
 
     .card-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       display: grid;
       place-items: center;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       flex-shrink: 0;
     }
 
+    .card-icon.ios { background: linear-gradient(135deg, #f0513833, #f0513811); }
     .card-icon.lifter { background: linear-gradient(135deg, #ff8b6a33, #ff8b6a11); }
     .card-icon.lumen { background: linear-gradient(135deg, #7c6cff33, #7c6cff11); }
     .card-icon.mic { background: linear-gradient(135deg, #3dd6c633, #3dd6c611); }
     .card-icon.swach { background: linear-gradient(135deg, #4ade8033, #4ade8011); }
+    .card-icon.lib { background: linear-gradient(135deg, #438eff33, #438eff11); }
 
     .badge {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -245,28 +403,16 @@
     }
 
     .badge.public { color: var(--accent-2); border-color: rgba(61, 214, 198, 0.25); }
+    .badge.flagship { color: var(--warm); border-color: rgba(255, 139, 106, 0.3); }
+    .badge.swift { color: var(--swift); border-color: rgba(240, 81, 56, 0.25); }
 
-    .card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
+    .card p { font-size: 0.9rem; color: var(--muted); flex: 1; }
 
-    .card p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      flex: 1;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
     .tag {
-      font-size: 0.75rem;
-      padding: 4px 10px;
+      font-size: 0.72rem;
+      padding: 4px 9px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.04);
       color: var(--muted);
@@ -274,25 +420,21 @@
     }
 
     .card-link {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: var(--accent-2);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
     }
 
     .card-link:hover { text-decoration: underline; }
+    .card-link.muted { color: var(--muted); font-weight: 500; pointer-events: none; }
 
-    .card-link.muted {
+    .card-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.78rem;
       color: var(--muted);
-      font-weight: 500;
-      cursor: default;
     }
-
-    .card-link.muted:hover { text-decoration: none; }
 
     .about {
       background: var(--surface);
@@ -302,34 +444,14 @@
       box-shadow: var(--shadow);
     }
 
-    .about p {
-      color: var(--muted);
-      max-width: 68ch;
-      margin-bottom: 16px;
-    }
-
+    .about p { color: var(--muted); max-width: 72ch; margin-bottom: 16px; }
     .about p:last-child { margin-bottom: 0; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.03em;
-    }
-
-    .stat span {
-      font-size: 0.82rem;
-      color: var(--muted);
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
     }
 
     footer {
@@ -344,17 +466,34 @@
       font-size: 0.88rem;
     }
 
-    footer a {
-      color: var(--accent-2);
-      text-decoration: none;
-    }
-
+    footer a { color: var(--accent-2); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @media (max-width: 900px) {
+      .analytics-grid { grid-template-columns: repeat(2, 1fr); }
+      .analytics-panel { grid-template-columns: 1fr; }
+      .showcase-hero { grid-template-columns: 1fr; }
+      .card.featured { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 640px) {
-      nav a { margin-left: 16px; font-size: 0.85rem; }
-      .stats { grid-template-columns: 1fr; }
-      .section-head { flex-direction: column; align-items: flex-start; }
+      .analytics-grid { grid-template-columns: 1fr; }
+      nav { gap: 6px 14px; }
     }
   </style>
 </head>
@@ -365,160 +504,369 @@
     <header>
       <a class="logo" href="#">Vishwa<span>.</span>dev</a>
       <nav>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#ios">iOS Suite</a>
+        <a href="#mobile">Mobile</a>
+        <a href="#opensource">Open Source</a>
         <a href="https://github.com/deepak4u2006" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </header>
 
     <section class="hero">
-      <p class="eyebrow">Mobile engineer · India</p>
-      <h1>Apps built for <em>real devices</em></h1>
+      <p class="eyebrow">iOS &amp; React Native · India · Hireable</p>
+      <h1>Engineering <em>mobile products</em> that ship</h1>
       <p class="lead">
-        React Native apps for iOS and Android — offline-first products, polished UX,
-        subscriptions, ads, and production-grade mobile architecture.
+        Fintech-style SwiftUI portfolio demos, production React Native apps, and a decade-plus
+        of iOS craft — MVVM-C, VIP, SPM modularity, offline-first data, Keychain security,
+        and polished motion.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#work">View projects</a>
-        <a class="btn btn-ghost" href="https://github.com/deepak4u2006" target="_blank" rel="noopener">GitHub profile</a>
+        <a class="btn btn-primary" href="#showcase">See demos &amp; media</a>
+        <a class="btn btn-ghost" href="https://github.com/deepak4u2006/ios-portfolio" target="_blank" rel="noopener">iOS portfolio index</a>
+        <a class="btn btn-ghost" href="https://learningiphonesdk.blogspot.com" target="_blank" rel="noopener">Blog</a>
       </div>
     </section>
 
-    <section id="work">
+    <section id="analytics">
       <div class="section-head">
-        <h2>Selected work</h2>
-        <p class="section-note">Personal &amp; product apps</p>
+        <h2><span class="live-dot"></span>GitHub analytics</h2>
+        <p class="section-note">Live from <a href="https://github.com/deepak4u2006" style="color:var(--accent-2)">@deepak4u2006</a></p>
+      </div>
+
+      <div class="analytics-grid">
+        <div class="metric">
+          <strong id="stat-repos">41</strong>
+          <span>Public repositories</span>
+        </div>
+        <div class="metric">
+          <strong id="stat-stars">—</strong>
+          <span>Total stars earned</span>
+        </div>
+        <div class="metric">
+          <strong>2012</strong>
+          <span>On GitHub since Dec 2012</span>
+        </div>
+        <div class="metric">
+          <strong id="stat-active">15+</strong>
+          <span>Active portfolio demos (2026)</span>
+        </div>
+      </div>
+
+      <div class="analytics-panel">
+        <div>
+          <h3 style="margin-bottom:16px">Language focus</h3>
+          <div class="lang-row"><span>Swift</span><div class="lang-bar"><i class="swift" style="width:72%"></i></div><span>72%</span></div>
+          <div class="lang-row"><span>JS / TS</span><div class="lang-bar"><i class="js" style="width:14%"></i></div><span>14%</span></div>
+          <div class="lang-row"><span>Obj-C</span><div class="lang-bar"><i class="objc" style="width:10%"></i></div><span>10%</span></div>
+          <div class="lang-row"><span>Other</span><div class="lang-bar"><i style="width:4%"></i></div><span>4%</span></div>
+          <p style="margin-top:20px;font-size:0.85rem;color:var(--muted)">
+            Primary stack: Swift · SwiftUI · UIKit · SPM · async/await · Combine ·
+            React Native · TypeScript · Keychain · XcodeGen · GitHub Actions
+          </p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:16px">Recently pushed</h3>
+          <ul class="activity-list" id="recent-repos">
+            <li><a href="https://github.com/deepak4u2006/PulseLedger">PulseLedger</a><time>May 2026</time></li>
+            <li><a href="https://github.com/deepak4u2006/CountriesVIP">CountriesVIP</a><time>May 2026</time></li>
+            <li><a href="https://github.com/deepak4u2006/VaultFlow">VaultFlow</a><time>May 2026</time></li>
+            <li><a href="https://github.com/deepak4u2006/NotifyLab">NotifyLab</a><time>May 2026</time></li>
+            <li><a href="https://github.com/deepak4u2006/BridgeKit">BridgeKit</a><time>May 2026</time></li>
+            <li><a href="https://github.com/deepak4u2006/SecureWarrior">SecureWarrior</a><time>May 2026</time></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase">
+      <div class="section-head">
+        <h2>Demos, screenshots &amp; motion</h2>
+        <p class="section-note">Media from GitHub repos</p>
+      </div>
+
+      <article class="showcase-hero">
+        <div class="showcase-copy">
+          <span class="badge flagship">Flagship</span>
+          <h3 style="font-size:1.6rem;margin-top:10px">PulseLedger</h3>
+          <p>
+            Neobank-style host app with local SPM packages, MVVM-C auth flow, VIP transaction
+            detail, magnetic card carousel, UIKit chart bridge, Keychain + biometrics, and
+            Lottie success animations.
+          </p>
+          <div class="tags">
+            <span class="tag">MVVM-C</span>
+            <span class="tag">VIP</span>
+            <span class="tag">SPM</span>
+            <span class="tag">Keychain</span>
+            <span class="tag">Lottie</span>
+          </div>
+          <a class="btn btn-primary" style="margin-top:8px" href="https://github.com/deepak4u2006/PulseLedger" target="_blank" rel="noopener">View PulseLedger →</a>
+        </div>
+        <div class="screenshot-grid">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/PulseLedger/main/docs/screenshots/dashboard.png" alt="PulseLedger dashboard" loading="lazy" />
+          <img src="https://raw.githubusercontent.com/deepak4u2006/PulseLedger/main/docs/screenshots/auth.png" alt="PulseLedger auth flow" loading="lazy" />
+          <img src="https://raw.githubusercontent.com/deepak4u2006/PulseLedger/main/docs/screenshots/transaction-history.png" alt="PulseLedger transaction history" loading="lazy" />
+          <img src="https://raw.githubusercontent.com/deepak4u2006/PulseLedger/main/docs/screenshots/detail.png" alt="PulseLedger transaction detail" loading="lazy" />
+        </div>
+      </article>
+
+      <div class="media-grid">
+        <figure class="media-item gif-wrap">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/Example_PanelBottom/master/demo.gif" alt="Bottom panel transition demo" loading="lazy" />
+          <figcaption><strong>Example Panel Bottom</strong>Animated pull-up panel with UIKit transitions</figcaption>
+        </figure>
+        <figure class="media-item">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/VaultFlow/main/docs/screenshots/onboarding.png" alt="VaultFlow onboarding" loading="lazy" />
+          <figcaption><strong>VaultFlow</strong>Flow onboarding + Keychain PIN + Face ID</figcaption>
+        </figure>
+        <figure class="media-item">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/CountriesVIP/main/docs/screenshots/countries-list.png" alt="CountriesVIP list" loading="lazy" />
+          <figcaption><strong>CountriesVIP</strong>VIP / Clean Architecture country browser</figcaption>
+        </figure>
+        <figure class="media-item">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/SwiftUI-TrelloClone/main/promo.jpg" alt="SwiftUI Trello Clone" loading="lazy" />
+          <figcaption><strong>SwiftUI Trello Clone</strong>Boards, lists, and drag-style UX</figcaption>
+        </figure>
+        <figure class="media-item">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/FootballDataSwiftUI/master/promo.png" alt="Football Data SwiftUI" loading="lazy" />
+          <figcaption><strong>Football Data SwiftUI</strong>Live scores, standings &amp; API integration</figcaption>
+        </figure>
+        <figure class="media-item">
+          <img src="https://raw.githubusercontent.com/deepak4u2006/PulseLedger/main/docs/screenshots/history.png" alt="PulseLedger history" loading="lazy" />
+          <figcaption><strong>PulseLedger</strong>Transaction history &amp; stacked card motion</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="ios">
+      <div class="section-head">
+        <h2>iOS portfolio suite</h2>
+        <p class="section-note"><a href="https://github.com/deepak4u2006/ios-portfolio" style="color:var(--accent-2)">15 SwiftUI fintech-inspired demos</a></p>
+      </div>
+
+      <div class="grid compact">
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🏦</div><span class="badge swift">SPM</span></div>
+          <h3>PulseLedger</h3>
+          <p>Neobank host — MVVM-C auth, VIP detail, magnetic cards, UIKit chart bridge.</p>
+          <div class="tags"><span class="tag">MVVM-C</span><span class="tag">VIP</span><span class="tag">Lottie</span></div>
+          <a class="card-link" href="https://github.com/deepak4u2006/PulseLedger" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🔐</div><span class="badge swift">Security</span></div>
+          <h3>VaultFlow</h3>
+          <p>Flow onboarding engine, Keychain PIN storage, Face ID unlock path.</p>
+          <div class="tags"><span class="tag">Keychain</span><span class="tag">Biometrics</span></div>
+          <a class="card-link" href="https://github.com/deepak4u2006/VaultFlow" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🛡️</div><span class="badge swift">Security</span></div>
+          <h3>SecureWarrior</h3>
+          <p>Keychain sessions, LocalAuthentication, Secure Enclave notes, ATS hardening.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/SecureWarrior" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🌍</div><span class="badge swift">VIP</span></div>
+          <h3>CountriesVIP</h3>
+          <p>Clean VIP architecture — Interactor, Presenter, Router country list.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/CountriesVIP" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🌉</div><span class="badge swift">Bridge</span></div>
+          <h3>BridgeKit</h3>
+          <p>UIKit ↔ SwiftUI bridges for charts and legacy component reuse.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/BridgeKit" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🔔</div><span class="badge swift">Notify</span></div>
+          <h3>NotifyLab</h3>
+          <p>Local notifications, categories, and payment-style alert patterns.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/NotifyLab" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">💳</div><span class="badge swift">Modules</span></div>
+          <h3>ModuPay</h3>
+          <p>SPM feature modules — payments split into composable packages.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/ModuPay" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">💱</div><span class="badge swift">async</span></div>
+          <h3>FXPulse</h3>
+          <p>FX rates dashboard with async/await networking patterns.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/FXPulse" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🃏</div><span class="badge swift">UI</span></div>
+          <h3>CardStackUI</h3>
+          <p>Magnetic card carousel and stacked card interaction design.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/CardStackUI" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">📊</div><span class="badge swift">Budget</span></div>
+          <h3>SpendGuard</h3>
+          <p>Spending limits, budget alerts, and guard-rail UX for fintech flows.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/SpendGuard" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🔗</div><span class="badge swift">KMP</span></div>
+          <h3>KMPocket</h3>
+          <p>Kotlin Multiplatform + Swift bridge for shared business logic.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/KMPocket" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🧾</div><span class="badge swift">ML</span></div>
+          <h3>ReceiptMind</h3>
+          <p>On-device receipt categorization and expense intelligence.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/ReceiptMind" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">🤖</div><span class="badge swift">Agent</span></div>
+          <h3>AgentTreasurer</h3>
+          <p>Agent-style treasurer with tool-use patterns for finance tasks.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/AgentTreasurer" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">👨‍👩‍👧</div><span class="badge swift">Family</span></div>
+          <h3>JuniorAllowance</h3>
+          <p>Family / Junior account UX — allowance tracking for neobank-style apps.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/JuniorAllowance" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon ios">👥</div><span class="badge swift">Split</span></div>
+          <h3>BizSplit</h3>
+          <p>Team expense splits and shared payment flows.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/BizSplit" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="mobile">
+      <div class="section-head">
+        <h2>React Native apps</h2>
+        <p class="section-note">Cross-platform production work</p>
       </div>
 
       <div class="grid">
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon lifter" aria-hidden="true">🏋️</div>
-            <span class="badge public">Open source</span>
-          </div>
+          <div class="card-top"><div class="card-icon lifter">🏋️</div><span class="badge public">Personal</span></div>
           <h3>Lifter</h3>
-          <p>Offline-first gym workout logger. Fast splits, set tracking, rest timers, and history — no accounts, no fluff.</p>
-          <div class="tags">
-            <span class="tag">Expo</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">Drizzle</span>
-            <span class="tag">Zustand</span>
-          </div>
-          <a class="card-link" href="https://github.com/deepak4u2006/LifterApp" target="_blank" rel="noopener">View on GitHub →</a>
+          <p>Offline-first gym logger — splits, sets, rest timers, Drizzle + SQLite, NativeWind dark UI.</p>
+          <div class="tags"><span class="tag">Expo</span><span class="tag">TypeScript</span><span class="tag">SQLite</span></div>
+          <a class="card-link" href="https://github.com/deepak4u2006/LifterApp" target="_blank" rel="noopener">GitHub →</a>
         </article>
-
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon lumen" aria-hidden="true">✨</div>
-            <span class="badge public">Open source</span>
-          </div>
+          <div class="card-top"><div class="card-icon lumen">✨</div><span class="badge public">Personal</span></div>
           <h3>Lumen</h3>
-          <p>Premium flashcard app with FSRS scheduling, Skia gradients, on-device storage, TTS/STT, and New Architecture React Native.</p>
-          <div class="tags">
-            <span class="tag">Bare RN</span>
-            <span class="tag">New Arch</span>
-            <span class="tag">Skia</span>
-            <span class="tag">Reanimated</span>
-            <span class="tag">i18n</span>
-          </div>
-          <a class="card-link" href="https://github.com/deepak4u2006/Lumen" target="_blank" rel="noopener">View on GitHub →</a>
+          <p>Flashcards with FSRS, Skia AI gradients, bare RN New Architecture, TTS/STT, i18n.</p>
+          <div class="tags"><span class="tag">Bare RN</span><span class="tag">Skia</span><span class="tag">New Arch</span></div>
+          <a class="card-link" href="https://github.com/deepak4u2006/Lumen" target="_blank" rel="noopener">GitHub →</a>
         </article>
-
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon mic" aria-hidden="true">🎤</div>
-            <span class="badge public">Open source</span>
-          </div>
+          <div class="card-top"><div class="card-icon mic">🎤</div><span class="badge public">Personal</span></div>
           <h3>Karaoke Mic</h3>
-          <p>Speaker &amp; microphone utility with pass-through audio, Bluetooth routing, themes, in-app purchases, and AdMob integration.</p>
-          <div class="tags">
-            <span class="tag">React Native</span>
-            <span class="tag">Audio</span>
-            <span class="tag">IAP</span>
-            <span class="tag">AdMob</span>
-            <span class="tag">Gestures</span>
-          </div>
-          <a class="card-link" href="https://github.com/deepak4u2006/KaraokeMic" target="_blank" rel="noopener">View on GitHub →</a>
+          <p>Pass-through audio, Bluetooth routing, themes, IAP, AdMob, gesture-handler polish.</p>
+          <div class="tags"><span class="tag">Audio</span><span class="tag">IAP</span><span class="tag">AdMob</span></div>
+          <a class="card-link" href="https://github.com/deepak4u2006/KaraokeMic" target="_blank" rel="noopener">GitHub →</a>
         </article>
-
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon swach" aria-hidden="true">🛒</div>
-            <span class="badge">Kosahkode</span>
-          </div>
+          <div class="card-top"><div class="card-icon swach">🛒</div><span class="badge">Kosahkode</span></div>
           <h3>Swachvega Customer</h3>
-          <p>Grocery commerce app with cart, checkout, PayU payments, Redux state, and a feature-driven React Native architecture.</p>
-          <div class="tags">
-            <span class="tag">React Native</span>
-            <span class="tag">Redux</span>
-            <span class="tag">PayU</span>
-            <span class="tag">E-commerce</span>
-          </div>
-          <span class="card-link muted">Private org repository</span>
+          <p>Grocery commerce — cart, PayU checkout, Redux, feature-driven architecture.</p>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">PayU</span></div>
+          <span class="card-link muted">Private org repo</span>
         </article>
-
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon swach" aria-hidden="true">🏪</div>
-            <span class="badge">Kosahkode</span>
-          </div>
+          <div class="card-top"><div class="card-icon swach">🏪</div><span class="badge">Kosahkode</span></div>
           <h3>Swachvega Merchant</h3>
-          <p>Vendor-side grocery platform with barcode/GTIN scanning, catalog search, staging &amp; production builds, and Diawi distribution.</p>
-          <div class="tags">
-            <span class="tag">React Native</span>
-            <span class="tag">Scanner</span>
-            <span class="tag">Multi-flavor</span>
-            <span class="tag">CI/CD</span>
-          </div>
-          <span class="card-link muted">Private org repository</span>
+          <p>GTIN scanning, catalog search, multi-flavor Android builds, Diawi distribution.</p>
+          <div class="tags"><span class="tag">Scanner</span><span class="tag">CI/CD</span></div>
+          <span class="card-link muted">Private org repo</span>
         </article>
-
         <article class="card">
-          <div class="card-top">
-            <div class="card-icon swach" aria-hidden="true">⚙️</div>
-            <span class="badge">Kosahkode</span>
-          </div>
+          <div class="card-top"><div class="card-icon swach">⚙️</div><span class="badge">Kosahkode</span></div>
           <h3>Swachvega API</h3>
-          <p>Backend services powering the Swachvega customer and merchant mobile apps — orders, catalog, and platform integrations.</p>
-          <div class="tags">
-            <span class="tag">API</span>
-            <span class="tag">Backend</span>
-            <span class="tag">Mobile-first</span>
-          </div>
-          <span class="card-link muted">Private org repository</span>
+          <p>Backend powering customer &amp; merchant apps — orders, catalog, integrations.</p>
+          <span class="card-link muted">Private org repo</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="opensource">
+      <div class="section-head">
+        <h2>Open source &amp; classics</h2>
+        <p class="section-note">Earlier iOS libraries &amp; learning projects</p>
+      </div>
+
+      <div class="grid compact">
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">⭐</div><span class="badge public">1 star</span></div>
+          <h3>countries_vip_clean</h3>
+          <p>VIP Clean Architecture assignment — country list with testable layers.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/countries_vip_clean" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">🃏</div><span class="badge public">1 star</span></div>
+          <h3>CardsView_iOS</h3>
+          <p>Material Design-style CardView for iOS (Objective-C).</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/CardsView_iOS" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">📋</div><span class="badge public">1 star</span></div>
+          <h3>VDDropDown</h3>
+          <p>Dropdown utility component for UIKit apps.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/VDDropDown" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">🔑</div></div>
+          <h3>Auth0.swift</h3>
+          <p>Auth0 Swift toolkit fork with custom modifications.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/Auth0.swift" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">🌤️</div></div>
+          <h3>SwiftUI-Weather</h3>
+          <p>SwiftUI weather example with modern declarative patterns.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/SwiftUI-Weather" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">🍎</div></div>
+          <h3>Apple_FrameWorks</h3>
+          <p>Sample SwiftUI app demonstrating MVVM structure.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/Apple_FrameWorks" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">🐍</div></div>
+          <h3>web_python_example</h3>
+          <p>Web app running Python scripts — full-stack experiment.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/web_python_example" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="card">
+          <div class="card-top"><div class="card-icon lib">📚</div><span class="badge public">1 star</span></div>
+          <h3>Leetcode-Questions</h3>
+          <p>Curated LeetCode question lists organized by company.</p>
+          <a class="card-link" href="https://github.com/deepak4u2006/Leetcode-Questions" target="_blank" rel="noopener">GitHub →</a>
         </article>
       </div>
     </section>
 
     <section id="about">
-      <div class="section-head">
-        <h2>About</h2>
-      </div>
+      <div class="section-head"><h2>About</h2></div>
       <div class="about">
         <p>
-          I'm Vishwa Deepak Choudhary, a mobile engineer focused on shipping polished
-          React Native applications. I care about offline-first data, thoughtful motion,
-          and architecture that survives App Store review and real-world scale.
+          I'm <strong>Vishwa Deepak Choudhary</strong>, an iOS and React Native engineer based in India.
+          I build fintech-inspired portfolio demos with real architecture patterns — not toy screens —
+          and ship cross-platform apps with offline-first data, secure auth, and production release pipelines.
         </p>
         <p>
-          Recent work spans fitness logging, study tools, audio utilities, and
-          full-stack grocery commerce — from SQLite on device to payment gateways
-          and multi-environment release pipelines.
+          My 2026 iOS suite explores what Revolut-style engineering looks like in SwiftUI: modular SPM,
+          MVVM-C coordinators, VIP interactors, Keychain sessions, biometric gates, and UIKit bridges
+          where SwiftUI still needs a push.
         </p>
-        <div class="stats">
-          <div class="stat">
-            <strong>6</strong>
-            <span>Apps in active development</span>
-          </div>
-          <div class="stat">
-            <strong>3</strong>
-            <span>Public GitHub repos</span>
-          </div>
-          <div class="stat">
-            <strong>iOS + Android</strong>
-            <span>Cross-platform delivery</span>
-          </div>
+        <div class="stack-row">
+          <span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">UIKit</span>
+          <span class="tag">SPM</span><span class="tag">React Native</span><span class="tag">TypeScript</span>
+          <span class="tag">Keychain</span><span class="tag">XcodeGen</span><span class="tag">GitHub Actions</span>
         </div>
       </div>
     </section>
@@ -529,8 +877,46 @@
         <a href="https://github.com/deepak4u2006" target="_blank" rel="noopener">@deepak4u2006</a>
         ·
         <a href="https://deepak4u2006.github.io">deepak4u2006.github.io</a>
+        ·
+        <a href="https://twitter.com/deepak4u2006" target="_blank" rel="noopener">@deepak4u2006</a>
       </span>
     </footer>
   </div>
+
+  <script>
+    (async function loadGitHubStats() {
+      try {
+        const userRes = await fetch('https://api.github.com/users/deepak4u2006');
+        const user = await userRes.json();
+        if (user.public_repos) {
+          document.getElementById('stat-repos').textContent = user.public_repos;
+        }
+
+        const reposRes = await fetch('https://api.github.com/users/deepak4u2006/repos?per_page=100');
+        const repos = await reposRes.json();
+        if (Array.isArray(repos)) {
+          const stars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+          document.getElementById('stat-stars').textContent = stars;
+
+          const recent = repos
+            .filter(r => !['deepak4u2006', 'deepak4u2006.github.io'].includes(r.name))
+            .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+            .slice(0, 8);
+
+          const list = document.getElementById('recent-repos');
+          list.innerHTML = recent.map(r => {
+            const d = new Date(r.pushed_at);
+            const label = d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            return `<li><a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a><time>${label}</time></li>`;
+          }).join('');
+
+          const iosCount = repos.filter(r => (r.description || '').includes('portfolio')).length;
+          if (iosCount) document.getElementById('stat-active').textContent = iosCount + '+';
+        }
+      } catch (_) {
+        /* static fallbacks already in HTML */
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vishwa Deepak Choudhary — mobile engineer building React Native apps for iOS and Android." />
+  <title>Vishwa Deepak Choudhary · Mobile Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0b10;
+      --surface: #12141c;
+      --surface-2: #1a1d28;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f4f5f7;
+      --muted: #9aa3b2;
+      --accent: #7c6cff;
+      --accent-2: #3dd6c6;
+      --warm: #ff8b6a;
+      --radius: 18px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(124, 108, 255, 0.18), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 10%, rgba(61, 214, 198, 0.12), transparent 50%),
+        radial-gradient(ellipse 40% 30% at 50% 100%, rgba(255, 139, 106, 0.08), transparent 45%);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0 48px;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent-2); }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hero {
+      padding: 32px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent-2);
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lead {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 52ch;
+      margin-bottom: 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5b4fd4);
+      color: white;
+      box-shadow: 0 12px 32px rgba(124, 108, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(124, 108, 255, 0.45);
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { background: var(--surface-2); }
+
+    section { margin-bottom: 72px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      box-shadow: var(--shadow);
+    }
+
+    .card:hover {
+      border-color: rgba(124, 108, 255, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon.lifter { background: linear-gradient(135deg, #ff8b6a33, #ff8b6a11); }
+    .card-icon.lumen { background: linear-gradient(135deg, #7c6cff33, #7c6cff11); }
+    .card-icon.mic { background: linear-gradient(135deg, #3dd6c633, #3dd6c611); }
+    .card-icon.swach { background: linear-gradient(135deg, #4ade8033, #4ade8011); }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .badge.public { color: var(--accent-2); border-color: rgba(61, 214, 198, 0.25); }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .card-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-2);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .card-link:hover { text-decoration: underline; }
+
+    .card-link.muted {
+      color: var(--muted);
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .card-link.muted:hover { text-decoration: none; }
+
+    .about {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .about p {
+      color: var(--muted);
+      max-width: 68ch;
+      margin-bottom: 16px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      nav a { margin-left: 16px; font-size: 0.85rem; }
+      .stats { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#">Vishwa<span>.</span>dev</a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/deepak4u2006" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Mobile engineer · India</p>
+      <h1>Apps built for <em>real devices</em></h1>
+      <p class="lead">
+        React Native apps for iOS and Android — offline-first products, polished UX,
+        subscriptions, ads, and production-grade mobile architecture.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#work">View projects</a>
+        <a class="btn btn-ghost" href="https://github.com/deepak4u2006" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p class="section-note">Personal &amp; product apps</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon lifter" aria-hidden="true">🏋️</div>
+            <span class="badge public">Open source</span>
+          </div>
+          <h3>Lifter</h3>
+          <p>Offline-first gym workout logger. Fast splits, set tracking, rest timers, and history — no accounts, no fluff.</p>
+          <div class="tags">
+            <span class="tag">Expo</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Drizzle</span>
+            <span class="tag">Zustand</span>
+          </div>
+          <a class="card-link" href="https://github.com/deepak4u2006/LifterApp" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon lumen" aria-hidden="true">✨</div>
+            <span class="badge public">Open source</span>
+          </div>
+          <h3>Lumen</h3>
+          <p>Premium flashcard app with FSRS scheduling, Skia gradients, on-device storage, TTS/STT, and New Architecture React Native.</p>
+          <div class="tags">
+            <span class="tag">Bare RN</span>
+            <span class="tag">New Arch</span>
+            <span class="tag">Skia</span>
+            <span class="tag">Reanimated</span>
+            <span class="tag">i18n</span>
+          </div>
+          <a class="card-link" href="https://github.com/deepak4u2006/Lumen" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon mic" aria-hidden="true">🎤</div>
+            <span class="badge public">Open source</span>
+          </div>
+          <h3>Karaoke Mic</h3>
+          <p>Speaker &amp; microphone utility with pass-through audio, Bluetooth routing, themes, in-app purchases, and AdMob integration.</p>
+          <div class="tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Audio</span>
+            <span class="tag">IAP</span>
+            <span class="tag">AdMob</span>
+            <span class="tag">Gestures</span>
+          </div>
+          <a class="card-link" href="https://github.com/deepak4u2006/KaraokeMic" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon swach" aria-hidden="true">🛒</div>
+            <span class="badge">Kosahkode</span>
+          </div>
+          <h3>Swachvega Customer</h3>
+          <p>Grocery commerce app with cart, checkout, PayU payments, Redux state, and a feature-driven React Native architecture.</p>
+          <div class="tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Redux</span>
+            <span class="tag">PayU</span>
+            <span class="tag">E-commerce</span>
+          </div>
+          <span class="card-link muted">Private org repository</span>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon swach" aria-hidden="true">🏪</div>
+            <span class="badge">Kosahkode</span>
+          </div>
+          <h3>Swachvega Merchant</h3>
+          <p>Vendor-side grocery platform with barcode/GTIN scanning, catalog search, staging &amp; production builds, and Diawi distribution.</p>
+          <div class="tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Scanner</span>
+            <span class="tag">Multi-flavor</span>
+            <span class="tag">CI/CD</span>
+          </div>
+          <span class="card-link muted">Private org repository</span>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="card-icon swach" aria-hidden="true">⚙️</div>
+            <span class="badge">Kosahkode</span>
+          </div>
+          <h3>Swachvega API</h3>
+          <p>Backend services powering the Swachvega customer and merchant mobile apps — orders, catalog, and platform integrations.</p>
+          <div class="tags">
+            <span class="tag">API</span>
+            <span class="tag">Backend</span>
+            <span class="tag">Mobile-first</span>
+          </div>
+          <span class="card-link muted">Private org repository</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about">
+        <p>
+          I'm Vishwa Deepak Choudhary, a mobile engineer focused on shipping polished
+          React Native applications. I care about offline-first data, thoughtful motion,
+          and architecture that survives App Store review and real-world scale.
+        </p>
+        <p>
+          Recent work spans fitness logging, study tools, audio utilities, and
+          full-stack grocery commerce — from SQLite on device to payment gateways
+          and multi-environment release pipelines.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <strong>6</strong>
+            <span>Apps in active development</span>
+          </div>
+          <div class="stat">
+            <strong>3</strong>
+            <span>Public GitHub repos</span>
+          </div>
+          <div class="stat">
+            <strong>iOS + Android</strong>
+            <span>Cross-platform delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Vishwa Deepak Choudhary</span>
+      <span>
+        <a href="https://github.com/deepak4u2006" target="_blank" rel="noopener">@deepak4u2006</a>
+        ·
+        <a href="https://deepak4u2006.github.io">deepak4u2006.github.io</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
